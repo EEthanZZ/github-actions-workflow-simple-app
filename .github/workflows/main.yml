@@ -12,5 +12,5 @@ jobs:
         with:
           aws_key_id: ${{ secrets.ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
-          aws_bucket: s3://gitaction-jiangren
+          aws_bucket: gitaction-jiangren
           source_dir: .
