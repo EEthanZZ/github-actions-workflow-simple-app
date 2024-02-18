@@ -16,4 +16,5 @@ jobs:
           aws-region: us-east-1
       - name: Sync files to S3 bucket
         run: |
+          mkdir build
           aws s3 sync build s3://gitaction-jiangren --delete
