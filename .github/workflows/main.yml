@@ -1,20 +1,16 @@
-name: Push to S3
 
-on: [push]
+name: Upload to S3
+
+on: [pull_request]
 
 jobs:
-  deploy:
+  upload:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup AWS CLI
-        uses: aws-actions/configure-aws-credentials@v1
+      - uses: actions/checkout@master
+      - uses: shallwefootball/s3-upload-action@master
         with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-      - name: Sync files to S3 bucket
-        run: |
-          mkdir build
-          aws s3 sync build s3://gitaction-jiangren
+          aws_key_id: ${{ secrets.ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.SECRET_ACCESS_KEY }}
+          aws_bucket: s3://gitaction-jiangren
+          source_dir: 'github-actions-workflow-simple-app'
