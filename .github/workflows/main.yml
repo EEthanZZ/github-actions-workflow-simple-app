@@ -17,4 +17,4 @@ jobs:
       - name: Sync files to S3 bucket
         run: |
           mkdir build
-          aws s3 sync build s3://gitaction-jiangren --delete
+          aws s3 sync build s3://gitaction-jiangren
